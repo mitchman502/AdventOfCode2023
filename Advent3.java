@@ -6,7 +6,7 @@ public class Advent3 {
         // String [] in = inputTest();
         String [] in = input();
 
-        // int out1 = 0;
+        int out1 = 0;
         int out2 = 0;
 
         String prevLine = null;
@@ -17,14 +17,15 @@ public class Advent3 {
             prevLine = (i!=0)           ? curLine : null;
             curLine  = (i!=0)           ? nextLine : in[i];
             nextLine = (i!=in.length-1) ? in[i+1] : null;
-            System.out.println();
-            System.out.println("line " + (i+1));
-            // out1 += part1(prevLine, curLine, nextLine);
+            // System.out.println();
+            // System.out.println("line " + (i+1));
+            out1 += part1(prevLine, curLine, nextLine);
             out2 += part2(prevLine, curLine, nextLine);
-            System.out.println(out2);
+            // System.out.println(out1);
+            // System.out.println(out2);
         }
         
-        // System.out.println("part1: " + out1);
+        System.out.println("part1: " + out1);
         System.out.println("part2: " + out2);
         System.out.println((System.currentTimeMillis() - start)/1000.0);
     }
@@ -81,9 +82,9 @@ public class Advent3 {
     private static int part2(String prev, String cur, String next) {
         int rowVal = 0;
 
-        System.out.println(prev);
-        System.out.println(cur);
-        System.out.println(next);
+        // System.out.println(prev);
+        // System.out.println(cur);
+        // System.out.println(next);
 
         char[] curChars = cur.toCharArray();
         for (int i=0; i<curChars.length; i++) {
@@ -93,14 +94,14 @@ public class Advent3 {
                 int numDown = numAdjacent(next, i);
                 int totalNum = numUp + numSide + numDown;
                 
-                System.out.println("numUp: " + numUp + " numSide: " + numSide + " numDown: " + numDown);
-                System.out.println(totalNum);
+                // System.out.println("numUp: " + numUp + " numSide: " + numSide + " numDown: " + numDown);
+                // System.out.println(totalNum);
 
                 if (totalNum != 2) continue;
 
                 rowVal += getNumVal(prev, i, numUp) * getNumVal(cur, i, numSide) * getNumVal(next, i, numDown);
 
-                System.out.println("rowVal: " + rowVal);
+                // System.out.println("rowVal: " + rowVal);
             }
         }
 
@@ -172,6 +173,8 @@ public class Advent3 {
 
         return vals[0];
     }
+
+    //-----------------------------------------------------------------------------------------------------
 
     private static String[] inputDefault() {
         return new String[] {
